@@ -1,6 +1,9 @@
-﻿int N = int.Parse(Console.ReadLine()??"0");
-int minusN = -N;
-for(int i = -N; i <= N; i++)
+﻿Console.WriteLine("Введите число:");
+int numPositive = int.Parse(Console.ReadLine()??"0");
+int numNegative = -1 * numPositive;
+
+for (int i = numNegative; i < numPositive; i++)
 {
-    Console.Write(i.ToString()+ " ");
+    Console.Write($"{i}, ");
 }
+Console.WriteLine($"{numPositive}.");
