@@ -63,3 +63,5 @@ while(n > 0){
 }
 Console.WriteLine(maxDigit);
 }
+
+ Variant1();
