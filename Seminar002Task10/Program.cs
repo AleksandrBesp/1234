@@ -12,5 +12,9 @@ if(Num1 == 0)
 {
     Console.WriteLine("Число содержит меньше трёх знаков!");
 }
-Num2 = (Num2 - (Num1*100 + Num3))/10;
-Console.WriteLine(Num2);
+else
+{
+    Num2 = (Num2 - (Num1*100 + Num3))/10;
+    Console.WriteLine(Num2);
+}
+
