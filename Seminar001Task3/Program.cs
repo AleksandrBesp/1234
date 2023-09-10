@@ -12,6 +12,7 @@
 
 // Console.WriteLine(dayOfWeek[day-1]);
 
+
 // System.Console.WriteLine("Введите номер");
 // int a = Convert.ToInt32 (Console.ReadLine());
 // switch (a)
