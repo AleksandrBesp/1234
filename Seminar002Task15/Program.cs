@@ -26,4 +26,4 @@ var Weekend = new Dictionary<int, string>()
 };
 Console.Write("Введите число: ");
 int day = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine(Week[day] + "-" + Weekend[day]);
+Console.WriteLine(Week[day] + " - " + Weekend[day]);
