@@ -1,39 +1,217 @@
-﻿//№25 Напишите цикл, который принимает на вход два числа (A и B) и возводит число A в натуральную степень B.
-// 3, 5 -> 243 (3⁵)
-// 2, 4 -> 16
-int Prompt(string massage)
+﻿// //№25 Напишите цикл, который принимает на вход два числа (A и B) и возводит число A в натуральную степень B.
+// // 3, 5 -> 243 (3⁵)
+// // 2, 4 -> 16
+// int Prompt(string massage)
+// {
+//     System.Console.Write(massage);//Выводим приглашение к вводу
+//     string readInput = System.Console.ReadLine();//Вводим значение
+//     int result = int.Parse(readInput);//Приводим к числу
+//     return result;//Возвращаем результат
+// }
+
+
+// int Power(int powerBase, int exponent)
+// {
+//     int power = 1;
+//     for (int i = 0 ; i < exponent; i++)
+//     {
+//         power *= powerBase;
+//     }
+//     return power;
+// }
+
+// bool ValidateExponent( int exponent)
+// {
+//     if(exponent < 0)
+//     {
+//         System.Console.WriteLine("Показатель не должен быть меньше нуля");
+//         return false;
+//     }
+//     return true;
+// }
+
+
+// int powerBase = Prompt("Введите основание: ");
+// int exponent = Prompt("Введите показатель: ");
+// if (ValidateExponent (exponent))
+// {
+//     System.Console.WriteLine($"Число {powerBase} в степени {exponent} равно {Power(powerBase, exponent)}");
+// }
+
+//Пример решения от Анастасии
+// №25 Напишите цикл, который принимает на вход два числа (A и B) и возводит число A в натуральную степень B.
+// * Написать калькулятор с операциями +, -, /, * и возведение в степень
+
+//Вводим данные
+string ReadData(string msg)
 {
-    System.Console.Write(massage);//Выводим приглашение к вводу
-    string readInput = System.Console.ReadLine();//Вводим значение
-    int result = int.Parse(readInput);//Приводим к числу
-    return result;//Возвращаем результат
+    Console.WriteLine(msg);
+    string data = Console.ReadLine();
+    return data;
 }
 
-
-int Power(int powerBase, int exponent)
+//Функция сложения
+double plus(int a, int b)
 {
-    int power = 1;
-    for (int i = 0 ; i < exponent; i++)
+    double result = a + b;
+    return result;
+}
+
+//Функция вычитания
+double minus(int a, int b)
+{
+    double result = a - b;
+    return result;
+}
+
+//Функция умножения
+double multiplication(int a, int b)
+{
+    double result = a * b;
+    return result;
+}
+
+//Функция деления
+double division(int a, int b)
+{
+    double result = a / b;
+    return result;
+}
+
+//Функция возведения в степень
+double degree(int a, int b)
+{
+    double result = Math.Pow(a, b);
+    return result;
+}
+
+//Печатаем результат
+void PrintResult(string msg)
+{
+    Console.WriteLine(msg);
+}
+
+int a = int.Parse(ReadData("Введите число А"));
+int b = int.Parse(ReadData("Введите число B"));
+string operand = ReadData("Введите операцию (+, -, *, /, ^)");
+
+//double result = getResult(a, b, operand);
+
+double result = 0;
+
+switch (operand)
+{
+    case "+": 
+    result = plus(a, b);
+    break;
+    case "-": 
+    result = minus(a, b);
+    break;
+    case "*": 
+    result = multiplication(a, b);
+    break;
+    case "/": 
+    result = division(a, b);
+    break;
+    case "^": 
+    result = degree(a, b);
+    break;
+    default: Console.WriteLine("Что-то пошло не так");
+    break;
+}
+
+PrintResult("Результат операции = " + result);
+
+void IvanMetod()
+{
+    string InputExpression(string msg) //ввод точки в виде строки
+{
+    Console.WriteLine(msg);
+    return Console.ReadLine()??"0";
+}
+
+double[] Pair(string sExpression) //парсим строку на числа
+{
+    double[] pair = new double[2];
+    char[] cExpression = sExpression.ToCharArray();
+    int j = 0;
+    for (int i = 0; i < pair.Length; i++)
     {
-        power *= powerBase;
+        string value = string.Empty;
+        //пропускаем все кроме кроме цифр, точки и минуса
+        while ((cExpression[j] < '0' || cExpression[j] > '9') && 
+        cExpression[j] != '.' && cExpression[j] != '-') 
+        {
+            j++;
+            if(j >= cExpression.Length) break;
+        }
+        //из цифр точки и минусов собираем числа
+        while (cExpression[j] >= '0' && cExpression[j] <= '9' || cExpression[j] == '.' ||
+         cExpression[j] == '-')
+        {
+            value = value + cExpression[j].ToString();
+            j++;
+            if(j >= cExpression.Length || cExpression[j] == '-') break; //если следующий знак - или стока кончается, то прерываем цикл
+        }
+        pair[i] = double.Parse(value ??"0");
     }
-    return power;
+    return pair;
 }
-
-bool ValidateExponent( int exponent)
+//выясняем какое действие надо совершить
+char Action(double[] pair, string sExpression)
 {
-    if(exponent < 0)
+    int begin = pair[0].ToString().Length;
+    char[] cExpression = sExpression.Trim().ToCharArray();
+    int end = cExpression.Length - pair[1].ToString().Length;
+    for(int i = begin; i < end; i++)
     {
-        System.Console.WriteLine("Показатель не должен быть меньше нуля");
-        return false;
+        if(cExpression[i] == '+' || cExpression[i] == '-' || cExpression[i] == '*' || 
+        cExpression[i] == '/' || cExpression[i] == '^') return cExpression[i];
     }
-    return true;
+    return '+';
+
+}
+// Целочисленное возведение в степень
+double ZPower(double basis, int pow)
+{
+    double res = 1;
+    for(int i = 0; i < Math.Abs(pow); i++)
+    {
+        res*=basis;
+    }
+    if(pow < 0) return 1 / res;
+    return res;
 }
 
-
-int powerBase = Prompt("Введите основание: ");
-int exponent = Prompt("Введите показатель: ");
-if (ValidateExponent (exponent))
+//Вычисляем выражение
+double Result(double[] pair, char act)
 {
-    System.Console.WriteLine($"Число {powerBase} в степени {exponent} равно {Power(powerBase, exponent)}");
+    switch (act)
+    {
+        case '+': return pair[0] + pair[1];
+        case '-': return pair[0] - pair[1];
+        case '*': return pair[0] - pair[1];
+        case '/': return pair[0] / pair[1];
+        case '^': 
+        {
+            if(pair[1] != (int)pair[1]) // если степень не целая, применяем встроенную функцию
+            {
+                return Math.Pow(pair[0], pair[1]);
+            } else { // в противном случае применяем целочисленное 
+            //возведение в степень, чтобы можно было возводить и отрицательные числа
+                return ZPower(pair[0], (int)pair[1]);
+            }
+        }
+        default: return pair[0] * pair[1];
+    }
+}
+
+Console.Clear();
+string expression = InputExpression("Введите выражение в виде А<действие>B: ");
+
+double[] pair = Pair(expression);
+
+char act = Action(pair, expression); 
+
+Console.WriteLine($"Результат выражения {pair[0]} { act.ToString() } {pair[1]} = {Result(pair, act)}");
 }
