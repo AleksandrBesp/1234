@@ -33,27 +33,56 @@
 
 
 
-int ReadData(string msg)
+// int ReadData(string msg)
+// {
+//     Console.WriteLine(msg);
+//     int num = int.Parse(Console.ReadLine() ?? "0");
+//     return num;
+// }
+
+// double Distance(int x,int y)
+// {
+//     double distance = Math.Sqrt(x*x+y*y);
+//     return distance;
+// }
+
+// void PrintResult(string msg)
+// {
+//     Console.WriteLine(msg);
+// }
+
+// int x1 = ReadData("Введите координату x1: ");
+// int y1 = ReadData("Введите координату y1: ");
+// int x2 = ReadData("Введите координату x2: ");
+// int y2 = ReadData("Введите координату y2: ");
+// double res = Distance((x2-x1),(y2-y1));
+// PrintResult("Расстояние равно " + $"{res}");
+
+double Prompt(string message1)
 {
-    Console.WriteLine(msg);
-    int num = int.Parse(Console.ReadLine() ?? "0");
-    return num;
+    Console.WriteLine(message1);
+    string values = Console.ReadLine()??",";
+
+    string[] valuesArray = values.Split(",");
+    int xA = Convert.ToInt32(valuesArray[0]);
+    int yA = Convert.ToInt32(valuesArray[1]);
+    int zA = Convert.ToInt32(valuesArray[2]);
+    int xB = Convert.ToInt32(valuesArray[3]);
+    int yB = Convert.ToInt32(valuesArray[4]);
+    int zB = Convert.ToInt32(valuesArray[5]);
+
+    return DistanceCalculation(xA, yA, zA, xB, yB, zB);
 }
 
-double Distance(int x,int y)
+
+//A (3,6,8); B (2,1,-7)
+// Расчёт расстояния
+double DistanceCalculation(int xA, int yA, int zA, int xB, int yB, int zB)
 {
-    double distance = Math.Sqrt(x*x+y*y);
-    return distance;
+    return Math.Sqrt(Math.Pow(Math.Abs(xA - xB), 2)
+                    + Math.Pow(Math.Abs(yA - yB), 2)
+                    + Math.Pow(Math.Abs(zA - zB), 2));
 }
 
-void PrintResult(string msg)
-{
-    Console.WriteLine(msg);
-}
+Console.WriteLine(Prompt("Введите 6 чисел через запятую (xA,yA,zA,xB,yB,zB): "));
 
-int x1 = ReadData("Введите координату x1: ");
-int y1 = ReadData("Введите координату y1: ");
-int x2 = ReadData("Введите координату x2: ");
-int y2 = ReadData("Введите координату y2: ");
-double res = Distance((x2-x1),(y2-y1));
-PrintResult("Расстояние равно " + $"{res}");
