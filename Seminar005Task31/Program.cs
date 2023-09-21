@@ -1,5 +1,4 @@
-﻿
-//Задайте массив из 12 элементов, заполненный случайными числами из промежутка [-9, 9]. 
+﻿//Задайте массив из 12 элементов, заполненный случайными числами из промежутка [-9, 9]. 
 //Найдите сумму отрицательных и положительных элементов массива.
 
 
@@ -17,15 +16,15 @@ int[] GenArray(int num, int lowBorder, int highBorder){
 }
 
 // Печатаем результат
-void PrintArray(int[] arr)
+void PrintArray(int[] array)
 {
     Console.Write("[");
-    for (int i = 0; i < arr.Length - 1; i++)
+    for (int i = 0; i < array.Length - 1; i++)
     {
-        Console.Write(arr[i] + ", ");
+        Console.Write(array[i] + ", ");
         
     }
-    Console.WriteLine(arr[arr.Length - 1] + "]");
+    Console.WriteLine(array[array.Length - 1] + "]");
 }
 
 (int, int) NegotivPositivSum(int[] arr)
