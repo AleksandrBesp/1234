@@ -36,29 +36,29 @@ void PrintFibonacciNumbers(int n)
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-using System.Numerics;
+// using System.Numerics;
 
-// Вывод сообщения и запись введённых данных
-int Prompt(string message)
-{
-    Console.Write(message);
-    string value = Console.ReadLine()??",";
-    int number = Convert.ToInt32(value);
+// // Вывод сообщения и запись введённых данных
+// int Prompt(string message)
+// {
+//     Console.Write(message);
+//     string value = Console.ReadLine()??",";
+//     int number = Convert.ToInt32(value);
 
-    return number;
-}
-// Считает первые N чисел Фибоначчи
-BigInteger[] FibonacciNumbers(int N)
-{
-    BigInteger[] fibonacciArray = new BigInteger[N];
-    fibonacciArray[0] = 0;
-    fibonacciArray[1] = 1;
+//     return number;
+// }
+// // Считает первые N чисел Фибоначчи
+// BigInteger[] FibonacciNumbers(int N)
+// {
+//     BigInteger[] fibonacciArray = new BigInteger[N];
+//     fibonacciArray[0] = 0;
+//     fibonacciArray[1] = 1;
 
-    for (int i = 2; i < N; i++)
-        fibonacciArray[i] = fibonacciArray[i - 1] + fibonacciArray[i - 2];
+//     for (int i = 2; i < N; i++)
+//         fibonacciArray[i] = fibonacciArray[i - 1] + fibonacciArray[i - 2];
 
-    return fibonacciArray;
-}
+//     return fibonacciArray;
+// }
 // Выводит элементы массива в консоль
 // void OutputFibonacci(BigInteger[] fibonacciArray)
 // {
