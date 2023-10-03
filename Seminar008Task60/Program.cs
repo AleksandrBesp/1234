@@ -9,7 +9,7 @@
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 
-void Fill3DArray(int countRow, int countColumn, int countFloor)
+void Fill3DArray(int countRow, int countColumn, int countFloor)//задаёт размер массива
 {
     int[,,] array3d = new int[countRow, countColumn, countFloor];
  
@@ -18,7 +18,7 @@ void Fill3DArray(int countRow, int countColumn, int countFloor)
 }
        
  
-void FillRandom(int[,,] array3d, Random random)
+void FillRandom(int[,,] array3d, Random random)//задаёт в массив рандомные числа
 {
     for (int i = 0; i < array3d.GetLength(0); i++)
     {
@@ -40,7 +40,7 @@ void FillRandom(int[,,] array3d, Random random)
     }
 }
  
-bool Array3dContains(int[,,] array3d, int randNumber)
+bool Array3dContains(int[,,] array3d, int randNumber)//Проверяет повторы чисел
 {
     for (int i = 0; i < array3d.GetLength(0); i++)
     {
@@ -64,11 +64,11 @@ void WriteArray3d(int[,,] array3d)
         {
             for(int t = 0; t < array3d.GetLength(2); t++)
             {
-            Console.Write(array3d[i, j, t] + $"({i},{j},{t})  ");
+            Console.Write(array3d[i, j, t] + $"({i},{j},{t})  ");//Выдаёт массив с индексом каждого элемента
             }
             Console.WriteLine();
         }         
     }
 }
 
-Fill3DArray(2,2,2);
+Fill3DArray(2,2,2);//Определяет размер массива
