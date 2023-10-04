@@ -25,7 +25,7 @@ int ReadData(string line)
 
 void GenLineRec(int num)
 {
-    Console.Write(num+" ");
+    Console.Write(num+", ");
     if(num<=1)
     {
     }
